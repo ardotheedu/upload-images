@@ -33,7 +33,7 @@ interface ImagesQueryResponse {
 }
 
 export default function Home(): JSX.Element {
-  const fetchProjects = ({ pageParam = 0 }) => api.get<ImagesQueryResponse>('/api/images', {
+  const fetchProjects = ({ pageParam = null }) => api.get<ImagesQueryResponse>('/api/images', {
     params: {
       after: pageParam,
     }
@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
       }
     }
   );
-
+  
   const dataa = {
     "pages": [
       {
@@ -116,19 +116,18 @@ export default function Home(): JSX.Element {
   }, [data]);
 
   
-  console.log(formattedData);
 
   // TODO RENDER LOADING SCREEN
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   // TODO RENDER ERROR SCREEN
 
-  if (isError) {
-    return <Error />;
-  }
+  // if (isError) {
+  //   return <Error />;
+  // }
 
   return (
     <>
